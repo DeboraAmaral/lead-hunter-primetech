@@ -1,15 +1,5 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+"""Compatibility exports for the shared database session components."""
 
-from app.core.config import settings
+from app.database.session import SessionLocal, engine, get_db
 
-engine = create_engine(
-    settings.DATABASE_URL,
-    connect_args={"check_same_thread": False},
-)
-
-SessionLocal = sessionmaker(
-    autoflush=False,
-    autocommit=False,
-    bind=engine,
-)
+__all__ = ["engine", "SessionLocal", "get_db"]
