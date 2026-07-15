@@ -1,0 +1,24 @@
+2026-07-14 23:01:29.953 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:01:29.963 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:01:29.965 | INFO     | app.services.lead_service:update_lead:40 - Updated lead with id: %s
+2026-07-14 23:01:29.967 | INFO     | app.services.lead_service:delete_lead:51 - Deleted lead with id: %s
+2026-07-14 23:01:29.968 | WARNING  | app.services.lead_service:get_lead:58 - Lead lookup failed for id: %s
+2026-07-14 23:01:29.976 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:01:29.977 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:01:29.979 | INFO     | app.services.lead_service:favorite_lead:101 - Favorited lead with id: %s
+2026-07-14 23:01:29.982 | INFO     | app.services.lead_service:list_leads:68 - Listed %s leads with page=%s size=%s
+2026-07-14 23:01:30.049 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:01:30.050 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:01:30.053 | INFO     | app.services.lead_service:search_leads:84 - Searched leads with term '%s'
+2026-07-14 23:01:49.827 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:01:49.836 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:01:49.839 | INFO     | app.services.lead_service:update_lead:40 - Updated lead with id: %s
+2026-07-14 23:01:49.840 | INFO     | app.services.lead_service:delete_lead:51 - Deleted lead with id: %s
+2026-07-14 23:01:49.840 | WARNING  | app.services.lead_service:get_lead:58 - Lead lookup failed for id: %s
+2026-07-14 23:01:49.847 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:01:49.848 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:01:49.850 | INFO     | app.services.lead_service:favorite_lead:101 - Favorited lead with id: %s
+2026-07-14 23:01:49.854 | INFO     | app.services.lead_service:list_leads:68 - Listed %s leads with page=%s size=%s
+2026-07-14 23:01:49.862 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:01:49.863 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:01:49.865 | INFO     | app.services.lead_service:search_leads:84 - Searched leads with term '%s'

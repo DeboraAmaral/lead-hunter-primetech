@@ -73,6 +73,9 @@ class LeadListResponse(BaseModel):
     """Schema returned when listing leads."""
 
     items: list[LeadResponse]
+    page: int = Field(..., ge=1)
+    size: int = Field(..., ge=1)
     total: int = Field(..., ge=0)
+    pages: int = Field(..., ge=0)
 
     model_config = ConfigDict(from_attributes=True)
