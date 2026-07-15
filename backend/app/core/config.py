@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from pydantic_settings import BaseSettings
 
 
@@ -7,7 +9,7 @@ class Settings(BaseSettings):
 
     API_PREFIX: str = "/api/v1"
 
-    DATABASE_URL: str = "sqlite:///./lead_hunter.db"
+    DATABASE_URL: str = f"sqlite:///{Path(__file__).resolve().parents[1] / 'lead_hunter.db'}"
 
     DEBUG: bool = True
 

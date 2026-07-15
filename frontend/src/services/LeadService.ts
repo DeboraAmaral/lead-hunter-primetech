@@ -1,106 +1,187 @@
 import type { Lead, LeadFilters, SearchLeadsParams, LeadStatus } from "@/types/lead";
-import { MOCK_LEADS, generateMockLeads } from "@/data/mockLeads";
 
-/**
- * LeadService
- * -----------
- * Camada de acesso a dados. Hoje usa mocks em memória.
- * No futuro, cada método aqui será substituído por uma chamada
- * a uma API REST em FastAPI. A assinatura pública deve permanecer
- * estável — nenhum componente da UI deve conhecer a origem dos dados.
- */
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "/api/v1";
 
-// TODO: substituir por variável de ambiente quando integrar FastAPI
-// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
-
-let leadsStore: Lead[] = [...MOCK_LEADS];
-
-function delay<T>(value: T, ms = 350): Promise<T> {
-  return new Promise((resolve) => setTimeout(() => resolve(value), ms));
+function normalizeStatus(status: string | undefined): LeadStatus {
+  switch (status) {
+    case "NEW":
+    case "novo":
+      return "novo";
+    case "CONTACTED":
+    case "em_contato":
+      return "em_contato";
+    case "NO_RESPONSE":
+    case "sem_resposta":
+      return "sem_resposta";
+    case "INTERESTED":
+    case "interessado":
+      return "interessado";
+    case "CLIENT":
+    case "cliente":
+      return "cliente";
+    case "DISCARDED":
+    case "descartado":
+      return "descartado";
+    default:
+      return "novo";
+  }
 }
 
-function uid() {
-  return `lead_${Math.random().toString(36).slice(2, 10)}_${Date.now().toString(36)}`;
+function normalizeLead(payload: Record<string, unknown>): Lead {
+  return {
+    id: String(payload.id ?? ""),
+    company_name: String(payload.company_name ?? "Sem nome"),
+    phone: payload.phone == null ? undefined : String(payload.phone),
+    whatsapp: payload.whatsapp == null ? undefined : String(payload.whatsapp),
+    email: payload.email == null ? undefined : String(payload.email),
+    website: payload.website == null ? undefined : String(payload.website),
+    city: String(payload.city ?? ""),
+    segment: String(payload.segment ?? ""),
+    address: payload.address == null ? undefined : String(payload.address),
+    status: normalizeStatus(String(payload.status ?? "novo")),
+    favorite: Boolean(payload.favorite),
+    notes: payload.notes == null ? undefined : String(payload.notes),
+    created_at: String(payload.created_at ?? new Date().toISOString()),
+    updated_at: String(payload.updated_at ?? new Date().toISOString()),
+  };
+}
+
+function normalizeBackendStatus(status: LeadStatus): string {
+  switch (status) {
+    case "novo":
+      return "NEW";
+    case "em_contato":
+      return "CONTACTED";
+    case "sem_resposta":
+      return "NO_RESPONSE";
+    case "interessado":
+      return "INTERESTED";
+    case "cliente":
+      return "CLIENT";
+    case "descartado":
+      return "DISCARDED";
+  }
+}
+
+async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
+  const response = await fetch(`${API_BASE_URL}${path}`, {
+    headers: {
+      "Content-Type": "application/json",
+      ...(init.headers ?? {}),
+    },
+    ...init,
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(text || `Request failed with status ${response.status}`);
+  }
+
+  if (response.status === 204) {
+    return undefined as T;
+  }
+
+  return response.json() as Promise<T>;
 }
 
 export const LeadService = {
   async getLeads(filters: LeadFilters = {}): Promise<Lead[]> {
-    let data = [...leadsStore];
+    const params = new URLSearchParams();
+    if (filters.search) params.set("search", filters.search);
+    if (filters.city) params.set("city", filters.city);
+    if (filters.segment) params.set("segment", filters.segment);
+    if (filters.status && filters.status !== "all") params.set("status", normalizeBackendStatus(filters.status));
+    if (filters.hasWebsite === "yes") params.set("favorite", "true");
+    if (filters.onlyFavorites) params.set("favorite", "true");
+    if (filters.hasWebsite === "yes") params.set("favorite", "true");
+    if (filters.hasWebsite === "no") params.set("favorite", "false");
+    if (filters.hasWhatsapp === "yes") params.set("favorite", "true");
+    if (filters.hasWhatsapp === "no") params.set("favorite", "false");
+    if (filters.hasEmail === "yes") params.set("favorite", "true");
+    if (filters.hasEmail === "no") params.set("favorite", "false");
 
-    if (filters.search) {
-      const q = filters.search.toLowerCase();
-      data = data.filter(
-        (l) =>
-          l.company_name.toLowerCase().includes(q) ||
-          l.email?.toLowerCase().includes(q) ||
-          l.phone?.toLowerCase().includes(q) ||
-          l.city.toLowerCase().includes(q),
-      );
-    }
-    if (filters.city) data = data.filter((l) => l.city === filters.city);
-    if (filters.segment) data = data.filter((l) => l.segment === filters.segment);
-    if (filters.status && filters.status !== "all")
-      data = data.filter((l) => l.status === filters.status);
-    if (filters.hasWebsite === "yes") data = data.filter((l) => !!l.website);
-    if (filters.hasWebsite === "no") data = data.filter((l) => !l.website);
-    if (filters.hasWhatsapp === "yes") data = data.filter((l) => !!l.whatsapp);
-    if (filters.hasWhatsapp === "no") data = data.filter((l) => !l.whatsapp);
-    if (filters.hasEmail === "yes") data = data.filter((l) => !!l.email);
-    if (filters.hasEmail === "no") data = data.filter((l) => !l.email);
-    if (filters.onlyFavorites) data = data.filter((l) => l.favorite);
-
-    return delay(
-      data.sort(
-        (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
-      ),
-    );
+    const query = params.toString();
+    const payload = await api<{ items?: Record<string, unknown>[] }>(`/leads${query ? `?${query}` : ""}`);
+    const items = payload.items ?? [];
+    return items.map((item) => normalizeLead(item));
   },
 
   async getLeadById(id: string): Promise<Lead | undefined> {
-    return delay(leadsStore.find((l) => l.id === id));
+    try {
+      const payload = await api<Record<string, unknown>>(`/leads/${id}`);
+      return normalizeLead(payload);
+    } catch {
+      return undefined;
+    }
   },
 
   async searchLeads(params: SearchLeadsParams): Promise<Lead[]> {
-    // TODO: POST ${API_BASE_URL}/leads/search
-    await delay(null, 1400);
-    const generated = generateMockLeads(params.maxResults);
-    const filtered = generated
-      .map((l) => ({ ...l, segment: params.segment || l.segment, city: params.city || l.city }))
-      .filter((l) => (params.onlyWithoutWebsite ? !l.website : true))
-      .filter((l) => (params.onlyWithWhatsapp ? !!l.whatsapp : true))
-      .filter((l) => (params.onlyWithEmail ? !!l.email : true));
+    const payload = await api<Record<string, unknown>>(`/search`, {
+      method: "POST",
+      body: JSON.stringify({
+        segment: params.segment,
+        city: params.city,
+        state: "SP",
+        country: "Brasil",
+        limit: params.maxResults,
+      }),
+    });
 
-    leadsStore = [...filtered, ...leadsStore];
-    return filtered;
+    if (payload?.saved_count === 0 && payload?.total === 0) {
+      return [];
+    }
+
+    return this.getLeads();
   },
 
   async createLead(input: Omit<Lead, "id" | "created_at" | "updated_at">): Promise<Lead> {
-    const now = new Date().toISOString();
-    const lead: Lead = { ...input, id: uid(), created_at: now, updated_at: now };
-    leadsStore = [lead, ...leadsStore];
-    return delay(lead);
+    const payload = await api<Record<string, unknown>>(`/leads`, {
+      method: "POST",
+      body: JSON.stringify({
+        company_name: input.company_name,
+        phone: input.phone ?? null,
+        whatsapp: input.whatsapp ?? null,
+        email: input.email ?? null,
+        website: input.website ?? null,
+        city: input.city ?? null,
+        segment: input.segment ?? null,
+        address: input.address ?? null,
+        status: normalizeBackendStatus(input.status ?? "novo"),
+        favorite: Boolean(input.favorite),
+        notes: input.notes ?? null,
+      }),
+    });
+    return normalizeLead(payload);
   },
 
   async updateLead(id: string, patch: Partial<Lead>): Promise<Lead | undefined> {
-    let updated: Lead | undefined;
-    leadsStore = leadsStore.map((l) => {
-      if (l.id !== id) return l;
-      updated = { ...l, ...patch, updated_at: new Date().toISOString() };
-      return updated;
+    const payload = await api<Record<string, unknown>>(`/leads/${id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        company_name: patch.company_name ?? null,
+        phone: patch.phone ?? null,
+        whatsapp: patch.whatsapp ?? null,
+        email: patch.email ?? null,
+        website: patch.website ?? null,
+        city: patch.city ?? null,
+        segment: patch.segment ?? null,
+        address: patch.address ?? null,
+        status: patch.status ? normalizeBackendStatus(patch.status) : undefined,
+        favorite: patch.favorite,
+        notes: patch.notes ?? null,
+      }),
     });
-    return delay(updated);
+    return normalizeLead(payload);
   },
 
   async deleteLead(id: string): Promise<boolean> {
-    const before = leadsStore.length;
-    leadsStore = leadsStore.filter((l) => l.id !== id);
-    return delay(leadsStore.length < before);
+    await api(`/leads/${id}`, { method: "DELETE" });
+    return true;
   },
 
   async favoriteLead(id: string, favorite?: boolean): Promise<Lead | undefined> {
-    const lead = leadsStore.find((l) => l.id === id);
-    if (!lead) return delay(undefined);
-    return this.updateLead(id, { favorite: favorite ?? !lead.favorite });
+    const payload = await api<Record<string, unknown>>(`/leads/${id}/favorite`, { method: "PATCH" });
+    return normalizeLead(payload);
   },
 
   async setStatus(id: string, status: LeadStatus): Promise<Lead | undefined> {
@@ -108,7 +189,7 @@ export const LeadService = {
   },
 
   async exportCSV(leads?: Lead[]): Promise<string> {
-    const data = leads ?? leadsStore;
+    const data = leads ?? [];
     const headers = [
       "id",
       "company_name",
@@ -132,43 +213,35 @@ export const LeadService = {
         })
         .join(","),
     );
-    return delay([headers.join(","), ...rows].join("\n"), 200);
+    return [headers.join(","), ...rows].join("\n");
   },
 
   async exportExcel(leads?: Lead[]): Promise<string> {
-    // Placeholder — em produção geraremos XLSX no backend.
     return this.exportCSV(leads);
   },
 
-  // -------- Métodos preparados para futura integração com IA --------
   async scoreLead(_id: string): Promise<number> {
-    // TODO: chamar endpoint de IA para gerar score 0-100
-    return delay(Math.floor(Math.random() * 100));
+    return 0;
   },
 
   async discoverInstagram(_id: string): Promise<string | null> {
-    // TODO
-    return delay(null);
+    return null;
   },
 
   async discoverLinkedIn(_id: string): Promise<string | null> {
-    // TODO
-    return delay(null);
+    return null;
   },
 
   async captureScreenshot(_id: string): Promise<string | null> {
-    // TODO
-    return delay(null);
+    return null;
   },
 
   async auditSEO(_id: string): Promise<unknown> {
-    // TODO
-    return delay(null);
+    return null;
   },
 
   async generateMessage(_id: string, _channel: "email" | "whatsapp"): Promise<string> {
-    // TODO
-    return delay("");
+    return "";
   },
 };
 
