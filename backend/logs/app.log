@@ -197,3 +197,136 @@
 2026-07-14 23:19:21.109 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
 2026-07-14 23:19:21.113 | INFO     | app.services.lead_service:search_leads:84 - Searched leads with term '%s'
 2026-07-14 23:19:21.125 | INFO     | app.services.osm_service:search_companies:67 - OSM search completed for %s/%s/%s with %s saved and %s duplicates
+2026-07-14 23:54:56.465 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:54:56.470 | INFO     | app.services.contact_discovery_service:discover_contacts:62 - Discovered contacts for lead %s: %s
+2026-07-14 23:54:56.570 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:54:56.577 | INFO     | app.services.website_analyzer_service:analyze_lead:119 - Website analysis completed for lead %s with score %s
+2026-07-14 23:54:56.588 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:54:56.594 | INFO     | app.services.website_analyzer_service:analyze_lead:39 - Skipping website analysis for lead %s because a recent analysis already exists
+2026-07-14 23:54:56.606 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:54:56.614 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:54:56.618 | INFO     | app.services.lead_service:update_lead:40 - Updated lead with id: %s
+2026-07-14 23:54:56.620 | INFO     | app.services.lead_service:delete_lead:51 - Deleted lead with id: %s
+2026-07-14 23:54:56.620 | WARNING  | app.services.lead_service:get_lead:58 - Lead lookup failed for id: %s
+2026-07-14 23:54:56.628 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:54:56.629 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:54:56.631 | INFO     | app.services.lead_service:favorite_lead:101 - Favorited lead with id: %s
+2026-07-14 23:54:56.634 | INFO     | app.services.lead_service:list_leads:68 - Listed %s leads with page=%s size=%s
+2026-07-14 23:54:56.642 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:54:56.644 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:54:56.646 | INFO     | app.services.lead_service:search_leads:84 - Searched leads with term '%s'
+2026-07-14 23:54:56.656 | INFO     | app.services.osm_service:search_companies:67 - OSM search completed for %s/%s/%s with %s saved and %s duplicates
+2026-07-14 23:55:07.186 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:07.191 | INFO     | app.services.contact_discovery_service:discover_contacts:62 - Discovered contacts for lead %s: %s
+2026-07-14 23:55:07.286 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:07.294 | INFO     | app.services.website_analyzer_service:analyze_lead:119 - Website analysis completed for lead %s with score %s
+2026-07-14 23:55:07.302 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:07.312 | INFO     | app.services.website_analyzer_service:analyze_lead:39 - Skipping website analysis for lead %s because a recent analysis already exists
+2026-07-14 23:55:07.323 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:07.333 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:07.336 | INFO     | app.services.lead_service:update_lead:40 - Updated lead with id: %s
+2026-07-14 23:55:07.338 | INFO     | app.services.lead_service:delete_lead:51 - Deleted lead with id: %s
+2026-07-14 23:55:07.339 | WARNING  | app.services.lead_service:get_lead:58 - Lead lookup failed for id: %s
+2026-07-14 23:55:07.346 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:07.348 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:07.350 | INFO     | app.services.lead_service:favorite_lead:101 - Favorited lead with id: %s
+2026-07-14 23:55:07.352 | INFO     | app.services.lead_service:list_leads:68 - Listed %s leads with page=%s size=%s
+2026-07-14 23:55:07.360 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:07.361 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:07.365 | INFO     | app.services.lead_service:search_leads:84 - Searched leads with term '%s'
+2026-07-14 23:55:07.375 | INFO     | app.services.osm_service:search_companies:67 - OSM search completed for %s/%s/%s with %s saved and %s duplicates
+2026-07-14 23:55:15.908 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:15.914 | INFO     | app.services.contact_discovery_service:discover_contacts:62 - Discovered contacts for lead %s: %s
+2026-07-14 23:55:16.027 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:16.036 | INFO     | app.services.website_analyzer_service:analyze_lead:119 - Website analysis completed for lead %s with score %s
+2026-07-14 23:55:16.045 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:16.053 | INFO     | app.services.website_analyzer_service:analyze_lead:39 - Skipping website analysis for lead %s because a recent analysis already exists
+2026-07-14 23:55:16.064 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:16.074 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:16.077 | INFO     | app.services.lead_service:update_lead:40 - Updated lead with id: %s
+2026-07-14 23:55:16.079 | INFO     | app.services.lead_service:delete_lead:51 - Deleted lead with id: %s
+2026-07-14 23:55:16.080 | WARNING  | app.services.lead_service:get_lead:58 - Lead lookup failed for id: %s
+2026-07-14 23:55:16.086 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:16.087 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:16.089 | INFO     | app.services.lead_service:favorite_lead:101 - Favorited lead with id: %s
+2026-07-14 23:55:16.092 | INFO     | app.services.lead_service:list_leads:68 - Listed %s leads with page=%s size=%s
+2026-07-14 23:55:16.101 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:16.102 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:16.105 | INFO     | app.services.lead_service:search_leads:84 - Searched leads with term '%s'
+2026-07-14 23:55:16.114 | INFO     | app.services.osm_service:search_companies:67 - OSM search completed for %s/%s/%s with %s saved and %s duplicates
+2026-07-14 23:55:33.357 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:33.363 | INFO     | app.services.contact_discovery_service:discover_contacts:62 - Discovered contacts for lead %s: %s
+2026-07-14 23:55:33.473 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:33.486 | INFO     | app.services.website_analyzer_service:analyze_lead:119 - Website analysis completed for lead %s with score %s
+2026-07-14 23:55:33.498 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:33.515 | INFO     | app.services.website_analyzer_service:analyze_lead:39 - Skipping website analysis for lead %s because a recent analysis already exists
+2026-07-14 23:55:33.531 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:33.546 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:33.550 | INFO     | app.services.lead_service:update_lead:40 - Updated lead with id: %s
+2026-07-14 23:55:33.555 | INFO     | app.services.lead_service:delete_lead:51 - Deleted lead with id: %s
+2026-07-14 23:55:33.556 | WARNING  | app.services.lead_service:get_lead:58 - Lead lookup failed for id: %s
+2026-07-14 23:55:33.569 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:33.571 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:33.573 | INFO     | app.services.lead_service:favorite_lead:101 - Favorited lead with id: %s
+2026-07-14 23:55:33.576 | INFO     | app.services.lead_service:list_leads:68 - Listed %s leads with page=%s size=%s
+2026-07-14 23:55:33.586 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:33.588 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:33.591 | INFO     | app.services.lead_service:search_leads:84 - Searched leads with term '%s'
+2026-07-14 23:55:33.602 | INFO     | app.services.osm_service:search_companies:67 - OSM search completed for %s/%s/%s with %s saved and %s duplicates
+2026-07-14 23:55:50.157 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:50.161 | INFO     | app.services.contact_discovery_service:discover_contacts:62 - Discovered contacts for lead %s: %s
+2026-07-14 23:55:50.301 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:50.311 | INFO     | app.services.website_analyzer_service:analyze_lead:119 - Website analysis completed for lead %s with score %s
+2026-07-14 23:55:50.320 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:50.333 | INFO     | app.services.website_analyzer_service:analyze_lead:39 - Skipping website analysis for lead %s because a recent analysis already exists
+2026-07-14 23:55:50.352 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:50.369 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:50.374 | INFO     | app.services.lead_service:update_lead:40 - Updated lead with id: %s
+2026-07-14 23:55:50.377 | INFO     | app.services.lead_service:delete_lead:51 - Deleted lead with id: %s
+2026-07-14 23:55:50.378 | WARNING  | app.services.lead_service:get_lead:58 - Lead lookup failed for id: %s
+2026-07-14 23:55:50.390 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:50.392 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:50.395 | INFO     | app.services.lead_service:favorite_lead:101 - Favorited lead with id: %s
+2026-07-14 23:55:50.401 | INFO     | app.services.lead_service:list_leads:68 - Listed %s leads with page=%s size=%s
+2026-07-14 23:55:50.424 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:50.425 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:55:50.433 | INFO     | app.services.lead_service:search_leads:84 - Searched leads with term '%s'
+2026-07-14 23:55:50.488 | INFO     | app.services.osm_service:search_companies:67 - OSM search completed for %s/%s/%s with %s saved and %s duplicates
+2026-07-14 23:56:00.258 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:00.262 | INFO     | app.services.contact_discovery_service:discover_contacts:62 - Discovered contacts for lead %s: %s
+2026-07-14 23:56:00.358 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:00.365 | INFO     | app.services.website_analyzer_service:analyze_lead:119 - Website analysis completed for lead %s with score %s
+2026-07-14 23:56:00.373 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:00.382 | INFO     | app.services.website_analyzer_service:analyze_lead:39 - Skipping website analysis for lead %s because a recent analysis already exists
+2026-07-14 23:56:00.392 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:00.401 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:00.405 | INFO     | app.services.lead_service:update_lead:40 - Updated lead with id: %s
+2026-07-14 23:56:00.408 | INFO     | app.services.lead_service:delete_lead:51 - Deleted lead with id: %s
+2026-07-14 23:56:00.408 | WARNING  | app.services.lead_service:get_lead:58 - Lead lookup failed for id: %s
+2026-07-14 23:56:00.415 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:00.417 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:00.418 | INFO     | app.services.lead_service:favorite_lead:101 - Favorited lead with id: %s
+2026-07-14 23:56:00.420 | INFO     | app.services.lead_service:list_leads:68 - Listed %s leads with page=%s size=%s
+2026-07-14 23:56:00.429 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:00.430 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:00.434 | INFO     | app.services.lead_service:search_leads:84 - Searched leads with term '%s'
+2026-07-14 23:56:00.447 | INFO     | app.services.osm_service:search_companies:67 - OSM search completed for %s/%s/%s with %s saved and %s duplicates
+2026-07-14 23:56:08.668 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:08.672 | INFO     | app.services.contact_discovery_service:discover_contacts:62 - Discovered contacts for lead %s: %s
+2026-07-14 23:56:08.680 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:08.687 | INFO     | app.services.website_analyzer_service:analyze_lead:119 - Website analysis completed for lead %s with score %s
+2026-07-14 23:56:08.694 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:08.699 | INFO     | app.services.website_analyzer_service:analyze_lead:39 - Skipping website analysis for lead %s because a recent analysis already exists
+2026-07-14 23:56:08.709 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:08.722 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:08.725 | INFO     | app.services.lead_service:update_lead:40 - Updated lead with id: %s
+2026-07-14 23:56:08.726 | INFO     | app.services.lead_service:delete_lead:51 - Deleted lead with id: %s
+2026-07-14 23:56:08.727 | WARNING  | app.services.lead_service:get_lead:58 - Lead lookup failed for id: %s
+2026-07-14 23:56:08.734 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:08.735 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:08.737 | INFO     | app.services.lead_service:favorite_lead:101 - Favorited lead with id: %s
+2026-07-14 23:56:08.739 | INFO     | app.services.lead_service:list_leads:68 - Listed %s leads with page=%s size=%s
+2026-07-14 23:56:08.747 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:08.748 | INFO     | app.services.lead_service:create_lead:27 - Created lead with id: %s
+2026-07-14 23:56:08.751 | INFO     | app.services.lead_service:search_leads:84 - Searched leads with term '%s'
+2026-07-14 23:56:08.764 | INFO     | app.services.osm_service:search_companies:67 - OSM search completed for %s/%s/%s with %s saved and %s duplicates
