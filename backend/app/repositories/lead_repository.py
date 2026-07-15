@@ -112,6 +112,21 @@ class LeadRepository:
 
         return int(self._session.scalar(select(func.count(Lead.id)).where(Lead.deleted.is_(False))))
 
+    def find_existing(self, payload: dict[str, Any]) -> Lead | None:
+        """Return an existing lead if a duplicate website, phone, or name is found."""
+
+        website = payload.get("website")
+        phone = payload.get("phone")
+        company_name = payload.get("company_name")
+        statement = select(Lead).where(Lead.deleted.is_(False))
+        if website:
+            statement = statement.where(Lead.website == str(website))
+        elif phone:
+            statement = statement.where(Lead.phone == str(phone))
+        else:
+            statement = statement.where(Lead.company_name == company_name)
+        return self._session.scalar(statement)
+
     @staticmethod
     def _normalize_payload(data: dict[str, Any]) -> dict[str, Any]:
         """Convert Pydantic-aware values into plain Python objects for persistence."""
